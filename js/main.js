@@ -17,13 +17,13 @@ let notiAdd = document.getElementById("notiAdd");
 
 getData();
 
-// popForm.addEventListener('submit',(event)=>{
-//     event.preventDefault();
-// })
+popForm.addEventListener('submit',(event)=>{
+    event.preventDefault();
+})
 
-// editForm.addEventListener('submit',(event)=>{
-//     event.preventDefault();
-// })
+editForm.addEventListener('submit',(event)=>{
+    event.preventDefault();
+})
 
 
 clearButton.style.display="none";

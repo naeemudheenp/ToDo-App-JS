@@ -1,3 +1,5 @@
+
+//variables
 let addButton = document.getElementById("addButton");
 let editButton = document.getElementById("editButton");
 let searchButton = document.getElementById("searchButton");
@@ -17,6 +19,7 @@ let notiAdd = document.getElementById("notiAdd");
 
 getData();
 
+//prevent default behavior of form
 popForm.addEventListener('submit',(event)=>{
     event.preventDefault();
 })
@@ -25,9 +28,10 @@ editForm.addEventListener('submit',(event)=>{
     event.preventDefault();
 })
 
-
+//hide clear button
 clearButton.style.display="none";
 
+//class
 class todoObject {
     constructor(id,name, desc) {
       this.id = id;  
@@ -36,6 +40,7 @@ class todoObject {
     }
   }
 
+  //listner on floating button
 addButton.parentElement.addEventListener("click",function (event){
     
     if(rotateStatus){
@@ -78,6 +83,8 @@ addButton.parentElement.addEventListener("click",function (event){
     
     }
 });
+
+//listner on submit button to add dta
 
 submitButton.addEventListener("click",function (e){
 
@@ -159,6 +166,9 @@ submitButton.addEventListener("click",function (e){
 
 //logic for getting data
 
+
+//fetch data from local storage
+
 function getData(){
     let val = [];
     todoCards = document.getElementById("todoCards")
@@ -193,6 +203,8 @@ function getData(){
 
 }
 
+//value item marked as completed
+
 function todoChecked(id){
   var obj = JSON.parse(localStorage.getItem(id))
   var data = [obj[0],obj[1],obj[2],true]
@@ -214,6 +226,8 @@ notiComp = document.getElementById('notiComp');
   }, 1000);
 }
 
+//open delete prompt
+
 function promptDelete(id){
     
     promptDelete  = document.getElementById('promptDelete');
@@ -229,6 +243,8 @@ function closePrompt(){
     promptDelete .style.maxHeight = "0vh";
     location.reload()
 }
+
+//delete from local storage
 
 function todoDelete(){
     id=    document.getElementById("conformButton").value ;
@@ -250,6 +266,8 @@ function todoDelete(){
     }, 1000);
    
   }
+
+  //edit values
 
   function editClick(id){
 
@@ -324,6 +342,8 @@ function todoDelete(){
      
     }, 1000);
   })
+
+  //search option
 
   searchButton.addEventListener("click",function(){
     searchButton.style.display= "none";

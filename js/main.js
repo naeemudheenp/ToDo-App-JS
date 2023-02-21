@@ -108,6 +108,7 @@ submitButton.addEventListener("click",function (e){
         setTimeout(()=>{
             
             notiAdd.style.maxHeight = "0vh";
+            location.reload()
            
             
         

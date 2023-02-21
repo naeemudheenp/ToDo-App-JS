@@ -1,0 +1,161 @@
+@use './global';
+.todoCards{
+
+
+  
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+
+    gap: 2vh;
+ 
+
+
+   
+
+    
+}
+
+.todoCards__card{
+
+    box-shadow: 5px 7px 38px -20px rgba(0,0,0,0.46);
+    -webkit-box-shadow: 5px 7px 38px -20px rgba(0,0,0,0.46);
+    -moz-box-shadow: 5px 7px 38px -20px rgba(0,0,0,0.46);
+    min-height: 10vh;
+    border-radius: 10px;
+
+    width: 90%;
+   
+    border: 1px solid $borderColor;
+
+    display: flex;
+  
+    padding: 2%;
+
+    gap: 2vw;
+
+    justify-content: space-around;
+  
+
+    &:hover .todoCards__card_tools{
+        visibility: visible;
+    }
+
+}
+
+.todoCards__card_check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todoCards__card_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+
+    min-width: 80%;
+    
+
+
+    h3,p{
+        margin: 0%;
+    }
+}
+
+.todoCards__card_tools{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+    visibility: hidden;
+}
+
+.todoCards__card_bin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    color: red;
+}
+
+.completed{
+    text-decoration: line-through;
+}
+
+@media screen and (min-width:576px) and (max-width:992px) {
+    .todoCards{
+
+
+  
+
+        display: grid;
+    
+        grid-template-columns: 1fr 1fr;
+    
+      
+     
+    
+    
+       
+    
+        
+    }  
+    
+    .todoCards__card{
+
+      
+    
+        width: 80%;
+       
+       
+    
+    }
+
+}
+
+
+
+
+
+
+@media screen and (min-width:993px) {
+    .todoCards{
+
+
+  
+
+        display: grid;
+    
+        grid-template-columns: 1fr 1fr;
+    
+      
+     
+    
+    
+       
+    
+        
+    }  
+    
+    .todoCards__card{
+
+      
+    
+        width: 70%;
+       
+       
+    
+    }
+
+}
+
+

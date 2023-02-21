@@ -1,0 +1,73 @@
+@use './global';
+.customAlert{
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+
+    font-size: 1.3rem;
+    
+    color: global.$borderColor;
+    min-width: 100vw;
+    margin: 0%;
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+    text-align: center;
+
+    border: 1px solid global.$borderColor;
+    border-bottom: none;
+
+    box-shadow: 5px 7px 38px -20px rgba(0,0,0,0.46);
+    -webkit-box-shadow: 5px 7px 38px -20px rgba(0,0,0,0.46);
+    -moz-box-shadow: 5px 7px 38px -20px rgba(0,0,0,0.46);
+
+    margin-left: auto;
+    margin-right: auto;
+   
+  
+
+    max-height: 0%;
+
+        -webkit-transition: max-height 0.5s; 
+        -moz-transition: max-height 0.5s; 
+        -ms-transition: max-height 0.5s; 
+        -o-transition: max-height 0.5s; 
+        transition: max-height ease-in-out 0.5s;  
+  
+}
+
+
+
+.customAlert__buttons{
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 2vh;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+
+    padding-bottom: 3%;
+}
+
+.customAlert__buttons_cancel button{
+    background-color: white;
+    color: global.$borderColor;
+    border: 1px solid global.$borderColor ;
+    
+    border-radius: 2px;
+
+    min-width: 30vw;
+    min-height: 4vh;
+}
+
+.customAlert__buttons_conform button{
+    background-color: global.$borderColor;
+    color: white;
+    border: none;
+    border-radius: 2px;
+
+    min-width: 30vw;
+    min-height: 4vh;
+}

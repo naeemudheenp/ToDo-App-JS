@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <!--Meta Tags-->
+            <meta charset="UTF-8">
+            <meta name="description" content="">
+            <meta name="keywords" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="author" content="">
+           
+        <!--Meta Tags-->
+        <!--Css Files-->
+            <link rel="stylesheet" href="./css/main.css">
+        <!--Css Files-->
+        <!--Other Files-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!--Other Files-->
+    </head>
+    <body>
+        
+        <section class="mainPage">
+            <!--Floating Button Begins Here-->
+            <a href="#" class="float">
+                <i id="addButton" class="fa fa-plus my-float"></i>
+            </a>
+            <!--Floating Button Ends Here-->
+
+            <!--Search Bar Begins Here-->
+            <section class="search_container">
+                <h2>ToDo Application</h2>
+            
+            <div class="search">
+                
+               
+            <div class="search__input">
+                <input type="text" name="searchText" id="searchText" placeholder="  Enter The Full Text | "> 
+            </div>
+            <div class="search__button">
+                <button id="searchButton">Search</button>
+                <button id="clearButton">Clear</button>
+            </div>
+        </div>
+            </section>
+            <!--Search Bar Ends Here-->
+
+
+        </section>
+
+
+        <section id="popform" class="popform">
+          
+            <form class="popform__items">
+                <!--Item -->
+                <div class="popform__items_item">
+               
+                    <input id="todoName" type="text" name="todoName" placeholder="Name">
+                </div>
+                <!--Item Ends Here-->
+
+                <!--Item -->
+                <div class="popform__items_item">
+                    
+                    <input id="todoDesc" type="text" name="todoDesc" placeholder="Description">
+                </div>
+                <!--Item Ends Here-->
+
+                <!--Item-->
+                <div class="popform__items_item_button">
+                    <button id="submitButton"  >Add</button>
+                </div>
+                <!--Item Ends-->
+
+            </form>
+
+        </section>
+
+
+        <section id="editform" class="popform">
+          
+            <form class="popform__items">
+                <!--Item -->
+                <div class="popform__items_item">
+               
+                    <input id="editName" type="text" name="todoName" placeholder="Name">
+                </div>
+                <!--Item Ends Here-->
+
+                <!--Item -->
+                <div class="popform__items_item">
+                    
+                    <input id="editDesc" type="text" name="todoDesc" placeholder="Description">
+                </div>
+                <!--Item Ends Here-->
+
+                <!--Item-->
+                <div class="popform__items_item_button">
+                    <button id="editButton" name="editButton" >Edit</button>
+                </div>
+                <!--Item Ends-->
+
+            </form>
+
+        </section>
+
+        <section id="searchCards" class="searchClose todoCards " >
+           
+        </section>
+
+        <section id="todoCards" class="todoCards">
+           
+        </section>
+
+        <section id="notiAdd" class="customAlert">
+            ToDo Added Succefully.
+
+        </section>
+
+        <section id="notiComp" class="customAlert">
+            ToDo Completed Succefully.
+
+        </section>
+
+        <section id="notiDelete" class="customAlert">
+            ToDo Deleted Succefully.
+
+        </section>
+
+        <section id="notiEdit" class="customAlert">
+            ToDo Edited Succefully.
+
+        </section>
+
+        <section id="promptDelete" class="customAlert">
+            This Proccess Cannot Be Undone ?
+            <div class="customAlert__buttons">
+                <div class="customAlert__buttons_cancel">
+                    <button id="cancelButton" onClick="closePrompt()">Cancel</button>
+                </div>
+                <div class="customAlert__buttons_conform">
+                    <button id="conformButton" onClick="todoDelete()">Conform</button>
+                </div>
+            </div>
+
+        </section>
+
+      
+
+    <script src="./js/main.js"></script>    
+    </body>
+</html>

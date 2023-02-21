@@ -1,0 +1,134 @@
+@import 'global';
+@import 'popform';
+
+
+        .search{
+            display: flex;
+            flex-direction: row;
+
+            justify-content: center;
+            align-items: center;
+
+     
+
+            background-color: $borderColor;
+
+            border-bottom-right-radius: 10px;    
+            border-bottom-left-radius: 10px;  
+
+          
+
+
+            &__input{
+                input{
+                    background-color:  white;
+                    border: 1px solid $borderColor;
+
+                    min-height: $mobile_buttonHeight;
+                    min-width: $mobile_buttonWidth + 40vw;
+
+                    border-top-left-radius: 2px;
+                    border-bottom-left-radius: 2px;
+                    border: 1px solid white;
+                    
+                }
+
+         
+               
+            }
+            &__button{
+                button{
+                    background-color: $borderColor;
+                    color: white;
+                    border: 1px solid white;
+                    
+                    border-top-right-radius: 2px;
+                    border-bottom-right-radius: 2px;
+
+
+                    min-height: $mobile_buttonHeight;
+                    min-width: $mobile_buttonWidth;
+                }
+            }
+
+            h2{
+                color: white;
+            }
+        }
+
+        .search_container{
+            @extend .search;
+            flex-direction: column;
+            min-height: 35vh;
+           
+
+            .h2{
+                margin: 0%;
+            }
+        }
+    
+
+
+    //medium screen 
+
+    @media screen and (min-width:992px) {
+                    
+        .search{
+            display: flex;
+            flex-direction: column;
+            min-width: $mobile_buttonWidth;
+
+            &__input{
+                input{
+                    background-color:  white;
+                    border: 1px solid $borderColor;
+
+                    min-height: $mobile_buttonHeight;
+                    min-width: $mobile_buttonWidth ;
+
+                    border-top-left-radius: 2px;
+                    border-bottom-left-radius: 2px;
+                    border: 1px solid white;
+                    
+                }
+
+         
+               
+            }
+            &__button{
+                button{
+                    background-color: $borderColor;
+                    color: white;
+                    border: 1px solid white;
+                    
+                    border-top-right-radius: 2px;
+                    border-bottom-right-radius: 2px;
+
+
+                    min-height: $mobile_buttonHeight;
+                    min-width: $mobile_buttonWidth;
+
+                }
+            }
+
+
+
+           
+        };
+
+        .search_container{
+            @extend .search;
+            flex-direction: column;
+            min-height: 35vh;
+           
+
+            .h2{
+                
+                margin: 0%;
+            }
+        }
+    
+    
+}
+
+

@@ -7,6 +7,7 @@ let clearButton = document.getElementById("clearButton");
 let popForm = document.getElementById("popform");
 let editForm = document.getElementById("editform");
 let submitButton = document.getElementById("submitButton");
+let history = []
 
 let searchText = document.getElementById("searchText");
 
@@ -367,9 +368,61 @@ function todoDelete(){
     }, 1000);
   })
 
-  //search option
+  // search option
 
-  // searchText.addEventListener("input",function (){
+  searchText.addEventListener("input",function (){
+    searchCards.replaceChildren()
+    if(searchText.value==''){
+      searchButton.style.display= "block";
+      clearButton.style.display="none"
+  
+      todoCards.style.display= "grid";
+      searchCards.setAttribute('style', 'display:none');
+      history=[]
+  
+      location.reload()
+    }
+
+    searchButton.style.display= "none";
+    clearButton.style.display="block"
+    todoCards.style.display= "none";
+    searchCards.setAttribute('style', 'display:grid !important');
+    
+    let list  = [];
+    let val = [];
+    
+    todoCards = document.getElementById("todoCards")
+   
+    for (var i = 0; i < localStorage.length; i++){
+       temp1= val = JSON.parse(localStorage.getItem(localStorage.key(i))); 
+       valCheck = temp1[1].toLowerCase().includes(searchText.value.toLowerCase());
+      
+     
+
+       if(valCheck){
+        val = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        
+          searchCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'><input type='checkbox' name='check' onclick=todoChecked("+val[0]+")></div><div class='todoCards__card_content'><h3>"+ val[1]+ "</h3><p>" + val[2] +"</p></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='todoDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
+         
+         
+        
+
+       }
+       
+
+      //  if(searchText.value.toLowerCase()==val[1].toLowerCase()){
+      //  
+      //  }
+   
+
+       
+      
+    }
+
+  
+  })
+
+  // searchButton.addEventListener("click",function(){
   //   searchButton.style.display= "none";
   //   clearButton.style.display="block"
   //   todoCards.style.display= "none";
@@ -399,42 +452,9 @@ function todoDelete(){
       
   //   }
 
-  
+    
+    
   // })
-
-  searchButton.addEventListener("click",function(){
-    searchButton.style.display= "none";
-    clearButton.style.display="block"
-    todoCards.style.display= "none";
-    searchCards.setAttribute('style', 'display:grid !important');
-    
-    let list  = [];
-    let val = [];
-    todoCards = document.getElementById("todoCards")
-   
-    for (var i = 0; i < localStorage.length; i++){
-      
-       valCheck = JSON.parse(localStorage.getItem(localStorage.key(i)).includes(searchText.value.toLowerCase()));
-      
-       if(valCheck){
-        val = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        searchCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'><input type='checkbox' name='check' onclick=todoChecked("+val[0]+")></div><div class='todoCards__card_content'><h3>"+ val[1]+ "</h3><p>" + val[2] +"</p></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='todoDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
-
-       }
-       
-
-      //  if(searchText.value.toLowerCase()==val[1].toLowerCase()){
-      //  
-      //  }
-   
-
-
-      
-    }
-
-    
-    
-  })
 
   clearButton.addEventListener("click",function (){
     

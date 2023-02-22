@@ -15,6 +15,7 @@ let rotateStatus=true;
 let editStatus=true;
 let notiAdd = document.getElementById("notiAdd");
 let notiError = document.getElementById("notiError");
+let notiEmp = document.getElementById("notiEmp");
 
 
 
@@ -169,6 +170,18 @@ submitButton.addEventListener("click",function (e){
 function getData(){//get all data from storage
     let val = [];
     todoCards = document.getElementById("todoCards")
+
+    if(localStorage.length<=0){
+      notiEmp.style.maxHeight = "10vh";
+ 
+      setTimeout(()=>{//set timer for notification. check whetehr all input is filled
+          
+          notiEmp.style.maxHeight = "0vh";
+          
+      }, 1000);
+      return;
+
+    }
 
     //filetring based on true or false
    

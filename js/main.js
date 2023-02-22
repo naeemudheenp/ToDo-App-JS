@@ -16,6 +16,7 @@ let todoCards = document.getElementById("todoCards");
 let rotateStatus=true;
 let editStatus=true;
 let notiAdd = document.getElementById("notiAdd");
+let notiError = document.getElementById("notiError");
 
 getData();
 
@@ -88,12 +89,35 @@ addButton.parentElement.addEventListener("click",function (event){
 
 submitButton.addEventListener("click",function (e){
 
+
+
   let todoId1=Math.random() * 1000;
  
     
     
     todoName=document.querySelector("#todoName").value;
     todoDesc=document.querySelector("#todoDesc").value;
+
+    if(todoName=="" || todoDesc==""){
+      notiError.style.maxHeight = "10vh";
+      
+       
+  
+
+      setTimeout(()=>{
+          
+          notiError.style.maxHeight = "0vh";
+          
+         
+          
+      
+         
+
+       
+      }, 1000);
+      return;
+      
+    }
      
     
     let todoArray = []

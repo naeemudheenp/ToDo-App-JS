@@ -8,20 +8,20 @@ let popForm = document.getElementById("popform");
 let editForm = document.getElementById("editform");
 let submitButton = document.getElementById("submitButton");
 let history = []
-
 let searchText = document.getElementById("searchText");
-
 let searchCards = document.getElementById("searchCards");
 let todoCards = document.getElementById("todoCards");
-
 let rotateStatus=true;
 let editStatus=true;
 let notiAdd = document.getElementById("notiAdd");
 let notiError = document.getElementById("notiError");
 
-getData();
 
-//prevent default behavior of form
+
+getData();//fetching all the data from local storage
+
+
+//prevent default behavior of form auto submission
 popForm.addEventListener('submit',(event)=>{
     event.preventDefault();
 })
@@ -30,10 +30,13 @@ editForm.addEventListener('submit',(event)=>{
     event.preventDefault();
 })
 
+
 //hide clear button
 clearButton.style.display="none";
 
-//class
+
+
+//class in case
 class todoObject {
     constructor(id,name, desc) {
       this.id = id;  
@@ -42,10 +45,12 @@ class todoObject {
     }
   }
 
-  //listner on floating button
+
+
+  //listner on floating button this will openup add form
 addButton.parentElement.addEventListener("click",function (event){
     
-    if(rotateStatus){
+    if(rotateStatus){//rotating floating button
         addButton.style.transitionDuration='1s';
         addButton.style.transform = 'rotate(360deg)';
         rotateStatus=false;
@@ -58,13 +63,6 @@ addButton.parentElement.addEventListener("click",function (event){
         addButton.classList.remove('fa-plus');
         addButton.classList.add('fa-minus');
 
-
-        
-
-     
-  
-
-    
     }
     else{
         addButton.style.transitionDuration='1s';
@@ -73,12 +71,7 @@ addButton.parentElement.addEventListener("click",function (event){
 
         popForm.style.maxHeight="0vh"
         popForm.style.minHeight="0vh"
-
        
-      
-
-       
-
         addButton.classList.add('fa-plus');
         addButton.classList.remove('fa-minus');
 
@@ -86,67 +79,47 @@ addButton.parentElement.addEventListener("click",function (event){
     }
 });
 
-//listner on submit button to add dta
+
+
+//listner on submit button to add data. this will sotre data in local storage
 
 submitButton.addEventListener("click",function (e){
 
-
-
-  let todoId1=Math.random() * 1000;
+  let todoId1=Math.random() * 1000; //to get random id
  
-    
-    
     todoName=document.querySelector("#todoName").value;
     todoDesc=document.querySelector("#todoDesc").value;
 
     if(todoName=="" || todoDesc==""){
       notiError.style.maxHeight = "10vh";
-      
-       
-  
-
-      setTimeout(()=>{
+ 
+      setTimeout(()=>{//set timer for notification. check whetehr all input is filled
           
           notiError.style.maxHeight = "0vh";
           
-         
-          
-      
-         
-
-       
       }, 1000);
       return;
       
     }
      
     
-    let todoArray = []
-    
-     todoArray = [todoId1,todoName,todoDesc,false]
-    let jsonObj1 = JSON.stringify(todoArray)
+     let todoArray = []
+     todoArray = [todoId1,todoName,todoDesc,false] //passing values as array
+     let jsonObj1 = JSON.stringify(todoArray) //json
    
-    localStorage.setItem(todoId1,jsonObj1);
-    
-  jsonObj1=null;
-  todoArray=null;
+     localStorage.setItem(todoId1,jsonObj1); //saving values
+        
+      jsonObj1=null;
+      todoArray=null;
         
 
-        notiAdd.style.maxHeight = "10vh";
+      notiAdd.style.maxHeight = "10vh";
       
-       
-  
-
-        setTimeout(()=>{
+      setTimeout(()=>{//again notifcation
             
             notiAdd.style.maxHeight = "0vh";
             location.reload()
-           
-            
-        
-           
-
-         
+    
         }, 1000);
   
 });
@@ -187,16 +160,17 @@ submitButton.addEventListener("click",function (e){
 // }
 
 
-
-
 //logic for getting data
 
 
 //fetch data from local storage
 
-function getData(){
+
+function getData(){//get all data from storage
     let val = [];
     todoCards = document.getElementById("todoCards")
+
+    //filetring based on true or false
    
     for (var i = 0; i < localStorage.length; i++){
        val = JSON.parse(localStorage.getItem(localStorage.key(i)));
@@ -205,10 +179,7 @@ function getData(){
         todoCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'><input type='checkbox' name='check' onclick=todoChecked("+val[0]+")></div><div class='todoCards__card_content'><h3>"+ val[1]+ "</h3><p>" + val[2] +"</p></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='promptDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
         
        }
-   
-
-
-      
+  
     }
 
     for (var i = 0; i < localStorage.length; i++){
@@ -218,15 +189,13 @@ function getData(){
             todoCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'></div><div class='todoCards__card_content'><h3 class='completed'>"+ val[1]+ "</h3></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='promptDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
           
         }
-    
- 
- 
-       
+   
      }
 
     
 
 }
+
 
 //value item marked as completed
 
@@ -251,6 +220,7 @@ notiComp = document.getElementById('notiComp');
   }, 1000);
 }
 
+
 //open delete prompt
 
 function promptDelete(id){
@@ -263,6 +233,7 @@ function promptDelete(id){
     
     
 }
+
 function closePrompt(){
     promptDelete  = document.getElementById('promptDelete');
     promptDelete .style.maxHeight = "0vh";
@@ -292,7 +263,7 @@ function todoDelete(){
    
   }
 
-  //edit values
+  //edit values openus up edit form
 
   function editClick(id){
 
@@ -305,7 +276,7 @@ function todoDelete(){
     editName.value = obj[1];
     editDesc.value = obj[2];
 
-    editButton.value = id;
+    editButton.value = id; //passing value to edit button
 
     if(editStatus){
       
@@ -314,16 +285,10 @@ function todoDelete(){
         editForm.style.minHeight="40vh"
         
 
-     
-
-
-        
-
-     
   
         editStatus=false;
 
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0);//going to top of screen
     
     }
     else{
@@ -332,18 +297,10 @@ function todoDelete(){
 
         editForm.style.maxHeight="0vh"
         editForm.style.minHeight="0vh"
-
-       
-      
-
-       
-
-      
-
-    
+  
     }
   }
-
+  //submitting editing value
   editButton.addEventListener("click",function (){
     editName = document.getElementById("editName").value;
     editDesc = document.getElementById("editDesc").value;
@@ -401,11 +358,14 @@ function todoDelete(){
 
        if(valCheck){
         val = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        if(!val[3]){
+          searchCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'><input type='checkbox' name='check' onclick=todoChecked("+val[0]+")></div><div class='todoCards__card_content'><h3>"+ val[1]+ "</h3><p>" + val[2] +"</p></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='promptDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
+          
+         }
+         if(val[3]){
+          searchCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'></div><div class='todoCards__card_content'><h3 class='completed'>"+ val[1]+ "</h3></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='promptDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
         
-          searchCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'><input type='checkbox' name='check' onclick=todoChecked("+val[0]+")></div><div class='todoCards__card_content'><h3>"+ val[1]+ "</h3><p>" + val[2] +"</p></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='todoDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
-         
-         
-        
+      }
 
        }
        
@@ -413,13 +373,9 @@ function todoDelete(){
       //  if(searchText.value.toLowerCase()==val[1].toLowerCase()){
       //  
       //  }
-   
-
-       
-      
+ 
     }
 
-  
   })
 
   // searchButton.addEventListener("click",function(){

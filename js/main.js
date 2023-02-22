@@ -369,6 +369,39 @@ function todoDelete(){
 
   //search option
 
+  // searchText.addEventListener("input",function (){
+  //   searchButton.style.display= "none";
+  //   clearButton.style.display="block"
+  //   todoCards.style.display= "none";
+  //   searchCards.setAttribute('style', 'display:grid !important');
+    
+  //   let list  = [];
+  //   let val = [];
+  //   todoCards = document.getElementById("todoCards")
+   
+  //   for (var i = 0; i < localStorage.length; i++){
+      
+  //      valCheck = JSON.parse(localStorage.getItem(localStorage.key(i)).includes(searchText.value.toLowerCase()));
+      
+  //      if(valCheck){
+  //       val = JSON.parse(localStorage.getItem(localStorage.key(i)));
+  //       searchCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'><input type='checkbox' name='check' onclick=todoChecked("+val[0]+")></div><div class='todoCards__card_content'><h3>"+ val[1]+ "</h3><p>" + val[2] +"</p></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='todoDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
+
+  //      }
+       
+
+  //     //  if(searchText.value.toLowerCase()==val[1].toLowerCase()){
+  //     //  
+  //     //  }
+   
+
+
+      
+  //   }
+
+  
+  // })
+
   searchButton.addEventListener("click",function(){
     searchButton.style.display= "none";
     clearButton.style.display="block"
@@ -380,12 +413,19 @@ function todoDelete(){
     todoCards = document.getElementById("todoCards")
    
     for (var i = 0; i < localStorage.length; i++){
-       val = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      
+       valCheck = JSON.parse(localStorage.getItem(localStorage.key(i)).includes(searchText.value.toLowerCase()));
+      
+       if(valCheck){
+        val = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        searchCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'><input type='checkbox' name='check' onclick=todoChecked("+val[0]+")></div><div class='todoCards__card_content'><h3>"+ val[1]+ "</h3><p>" + val[2] +"</p></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='todoDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
+
+       }
        
 
-       if(searchText.value.toLowerCase()==val[1].toLowerCase()){
-        searchCards.insertAdjacentHTML('beforeend',"<div class='todoCards__card'><div class='todoCards__card_check'><input type='checkbox' name='check' onclick=todoChecked("+val[0]+")></div><div class='todoCards__card_content'><h3>"+ val[1]+ "</h3><p>" + val[2] +"</p></div> <div class='todoCards__card_tools'><div class='todoCards__card_bin' onClick='todoDelete("+val[0] +")' ><i class='fa-solid fa-trash'></i></div><div class='todoCards__card_edit' > <i id='editButton' onClick=' editClick("+val[0] +")' class='fa-solid fa-pencil'></i></div></div></div>");
-       }
+      //  if(searchText.value.toLowerCase()==val[1].toLowerCase()){
+      //  
+      //  }
    
 
 
